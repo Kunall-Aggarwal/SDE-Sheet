@@ -1,0 +1,22 @@
+Approach 1: traverse two times and check for each case 
+Approach 2: Kadane's Algo
+
+
+Most Optimised Approach (Approach 2):
+
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int sum = 0;
+        
+        for(int i: nums){
+            sum += i;
+            max = Math.max(sum,max); 
+            
+            if(sum < 0)
+                sum = 0;
+        }
+        return max;
+    }
+}
