@@ -1,0 +1,41 @@
+Given : 			a = [1,4,5,3,2]
+
+Approach : step 1) a[i] < a[i+1]      	-> 	idx1 = 1;
+	   step 2) a[idx2] > a[idx1]  	->	idx2 = 3;
+	   step 3) swap (idx1, idx 2)
+	   step 4) reverse (idx1 + 1, last)
+	   
+	   
+Most Optimised Approach :
+
+
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int idx1 = nums.length - 2;
+        
+        while(idx1 >= 0 && nums[idx1] >= nums[idx1 + 1])
+            idx1--;
+        
+        if(idx1 >= 0){
+            int idx2 = nums.length - 1;
+            while(nums[idx2] <= nums[idx1])
+                idx2--;
+            swap(idx1, idx2, nums);
+        }
+        
+        reverse(idx1 + 1, nums.length - 1, nums);
+    }
+    
+    public void swap(int l, int h, int[] nums){
+        int temp = nums[l];
+        nums[l] = nums[h];
+        nums[h] = temp;
+    }
+    
+    public void reverse(int start, int end, int[] nums){
+        while(start < end){
+            swap(start++, end--, nums);
+        }
+    }
+}
+
