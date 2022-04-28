@@ -1,0 +1,33 @@
+Approach 1: make a new matrix and add values to it.
+Approach 2: convert matrix into its transpose and then reverse each row. (transpose means row into columns and columns into rows)
+
+
+Most Optimised Approach (Approach 2):
+
+
+class Solution {
+    public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        
+        for(int i = 0 ; i < n; i++){
+            int j = 0;
+            while(j <= i){
+                int temp = matrix[j][i];
+                matrix[j][i] = matrix[i][j];
+                matrix[i][j] = temp;
+                j++;
+            }
+        }
+        
+        for(int i = 0; i < n; i++){
+            int l = 0, h = n - 1;
+            while(l < h){
+                int temp = matrix[i][l];
+                matrix[i][l] = matrix[i][h];
+                matrix[i][h] = temp;
+                l++;
+                h--;
+            }
+        }
+    }
+}
