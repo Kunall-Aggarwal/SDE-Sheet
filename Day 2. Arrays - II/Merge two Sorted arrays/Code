@@ -1,0 +1,22 @@
+Approach 1: make a new array and start adding values to it.
+Approach 2: while traversing in array swap elements and sort the array after each swap.
+Approach 3: using gap algorithm (Intution not found)
+
+
+
+Most optimised Approach for the question:
+
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int i = m-1, j = n-1, end = m+n-1;
+        
+        while(i >= 0 && j >= 0){
+            nums1[end--] = (nums1[i] > nums2[j]) ? nums1[i--] : nums2[j--];
+        }
+        
+        while(j >= 0){
+            nums1[end--] = nums2[j--];
+        }
+    }
+}
