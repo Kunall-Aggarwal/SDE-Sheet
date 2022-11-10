@@ -2,7 +2,7 @@ Approach 1: Brute force n^2
 Approach 2: Counting each number's frequency
 Approach 3: Hash Set
 Approach 4: Sorting anf finding
-Approach 5: Using fast and slow pointer like linklist 
+Approach 5: Using fast and slow pointer like linklist (Circular linklist)
 
 Most Optimised Approach (Approach 5):
 
