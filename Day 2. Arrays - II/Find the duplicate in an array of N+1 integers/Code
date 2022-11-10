@@ -1,0 +1,27 @@
+Approach 1: Brute force n^2
+Approach 2: Counting each number's frequency
+Approach 3: Hash Set
+Approach 4: Sorting anf finding
+Approach 5: Using fast and slow pointer like linklist 
+
+Most Optimised Approach (Approach 5):
+
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int fast = nums[nums[0]], slow = nums[0];
+        
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }
+        
+        slow = 0;
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        
+        return slow;
+    }
+}
