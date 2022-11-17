@@ -1,0 +1,55 @@
+Approach 1: Brute force N^2
+Approach 2: Using Merge Sort
+
+
+Most Optimised Approach (Approach 2):
+
+public class Solution {
+    public static long getInversions(long arr[], int n) {
+        // Write your code here.
+        int h = n-1;
+        long temp[] = new long[n];
+        
+        int inv = merge(arr, temp, 0, h);
+        
+        return (long)inv;
+    }
+    public static int merge(long arr[], long temp[], int l, int h){
+        int mid;
+        int inv = 0;
+        if(l < h){
+            mid = (l+h)/2;
+            
+            inv += merge(arr, temp, l, mid);
+            inv += merge(arr, temp, mid + 1, h);
+            
+            inv += merging(arr, temp, l, mid+1, h);
+        }
+        return inv;
+    }
+    public static int merging(long arr[], long temp[], int l, int mid, int h){
+        int i = l, j = mid, k = l;
+        int inv = 0;
+        
+        while((i <= mid-1) && (j <= h)){
+            if(arr[i] <= arr[j]){
+                temp[k++] = arr[i++];
+            }
+            else{
+                temp[k++] = arr[j++];
+            
+                inv = inv + (mid-i);
+            }
+        }
+            while(i <= mid-1){
+                temp[k++] = arr[i++];
+            }
+            while(j <= h){
+                temp[k++] = arr[j++];
+            }
+            for(i = l; i<=h; i++){
+                arr[i] = temp[i];
+            }
+            return inv;
+    }
+}
